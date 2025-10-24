@@ -1,0 +1,44 @@
+## TODO: 
+Creer les tables
+	Creer Products (+ colonnes & id etc)
+	Creer Categories
+	Lier avec clefs + faire une table de liaison pcq un produit peut avoir plusieurs cat ((: (j'ai lu trop vite) (coucou)
+
+Faire la requete
+
+Pas de Bonus
+
+
+
+## Création des tables
+
+CREATE TABLE Categories (
+	CategoryId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(255),
+	IsPrivate BOOLEAN
+)
+
+CREATE TABLE Products (
+    ProductId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Price FLOAT, // ou plus precis DECIMAL ou NUMERIC
+    CreationDate DATETIME, // ou DATE
+);
+
+CREATE TABLE Products_Categories (
+	ProductId INT PRIMARY KEY NOT NULL,
+	CategoryId INT PRIMARY KEY NOT NULL,
+    FOREIGN KEY (ProductId) REFERENCES Products(ProductId),
+    FOREIGN KEY (CategoryId) REFERENCES Categories(CategoryId)
+)
+
+
+## Requete
+
+Select P.ProductId, P.Name, Count(DISTINCT C.CategoryId) as NumbOfCat
+from Products as P
+leftjoin Products_Categories as PC on P.ProductId = PC.ProductId
+leftjoin Categories as C on PC.CategoryId = C.CategoryId
+where Categories.IsPrivate is False
+group by P.ProductId
+having Count(DISTINCT C.CategoryId) > 5;
