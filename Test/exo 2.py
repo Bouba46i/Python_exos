@@ -1,11 +1,8 @@
 #TODO :
-# implementer le game of life
-#   matrice n x m
-#   j'assume que n > 0 & m > 0	
+# done
 #
-# bonus
-#	creer un fichier html avec le resultat
-#		se décider du format du resultat
+# ⚠️ matrice n x m
+# j'assume que n > 0 & m > 0	
 #
 import copy
 import numpy as np
@@ -43,18 +40,19 @@ def gol_iteration(matrix):
 	
     return new_matrix
 
-# bonus pour apres
-# fonction pour creer fichier html
+# bonus 
+def print_html_file_with_matrix(matrix):
+    with open("index.html", "w") as file:
+        # formatage de l'output
+        output = f"{np.array2string(matrix)}".replace("[","").replace("]","").replace(" ","").replace("0","🟦").replace("1","🟥")
+        
+        file.write(output)
 
 def game_of_life(matrix):
-
     for i in range(0, 5):
         matrix = gol_iteration(matrix)
     
-    # appeler fonction pour creer fichier html
-    # print_hmtl(matrix)
-    
-    return None
+    print_html_file_with_matrix(matrix)
 
 
 
