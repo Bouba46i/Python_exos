@@ -1,17 +1,25 @@
 #TODO :
-# bonus
+# done
 
-#bonus pour après
 dict_fizz_buzz = {'3': 'Fizz', '5':'Buzz'}
+dict_fizz_buzz_lazz_dezz = {'3': 'Fizz', '5':'Buzz', '9':'Lazz', '15': 'Dezz'}
 
 
-def output_numb():
-    for i in range(1, 101):
+
+def get_processed_output(numb, dict):
         output = ''
-        # pour le bonus, faire une fonction qui passe a travers le dico donné 
-        # et ajouter la chaine quand c'est un dénominateur du nombre
-        if i % 3 == 0: output += 'Fizz'
-        if i % 5 == 0: output += 'Buzz'
+        for key, val in dict.items():
+            if key.isdigit() and numb % int(key) == 0: output += val
+        return output
+
+    
+def output_numb(dict):
+    for i in range(1, 101):
+        output = get_processed_output(i, dict)
         print(i if not output else output)
 
-output_numb()
+
+print("#### first dict ####")
+output_numb(dict_fizz_buzz)
+print("\n#### second dict ####")
+output_numb(dict_fizz_buzz_lazz_dezz)
