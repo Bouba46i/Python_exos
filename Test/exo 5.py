@@ -1,8 +1,7 @@
 #TODO :
-# bonus -> utiliser un type de recursion optimisé pour traiter un grand tableau
+# done
 
 numb_array = [1, 2, 3, 4]
-
 
 def calc_sum(array):
     total = 0
@@ -10,8 +9,9 @@ def calc_sum(array):
         total += e
     return total
 
-# bonus pour apres
-# calc_sum_rec
+# bonus
+def calc_sum_rec(array, acc=0):
+    return acc if len(array) == 0 else calc_sum_rec(array[1:], acc + array[0])
 
 print(calc_sum(numb_array))
-# print(calc_sum_rec(numb_array))
+print(calc_sum_rec(numb_array))
