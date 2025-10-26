@@ -45,8 +45,19 @@ def print_html_file_with_matrix(matrix):
     with open("index.html", "w") as file:
         # formatage de l'output
         output = f"{np.array2string(matrix)}".replace("[","").replace("]","").replace(" ","").replace("0","🟦").replace("1","🟥")
-        
-        file.write(output)
+        html_layout = lambda str : f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultat GOL</title>
+</head>
+<body>
+    <h1>Output GOL :</h1>
+    <pre>{str}</pre>
+</body>
+</html>
+"""
+        file.write(html_layout(output))
 
 def game_of_life(matrix):
     for i in range(0, 5):
