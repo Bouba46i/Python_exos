@@ -12,3 +12,5 @@ GitHub commits explanation :
 📈 : improve
 
 🧹 : cleaning
+
+🛠️ : fixing

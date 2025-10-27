@@ -41,11 +41,7 @@ def gol_iteration(matrix):
     return new_matrix
 
 # bonus 
-def print_html_file_with_matrix(matrix):
-    with open("index.html", "w") as file:
-        # formatage de l'output
-        output = f"{np.array2string(matrix)}".replace("[","").replace("]","").replace(" ","").replace("0","🟦").replace("1","🟥")
-        html_layout = lambda str : f"""<!DOCTYPE html>
+html_layout = lambda str : f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -57,6 +53,12 @@ def print_html_file_with_matrix(matrix):
 </body>
 </html>
 """
+
+def print_html_file_with_matrix(matrix):
+    with open("index.html", "w") as file:
+        # formatage de l'output
+        output = f"{np.array2string(matrix)}".replace("[","").replace("]","").replace(" ","").replace("0","🟦").replace("1","🟥")
+        
         file.write(html_layout(output))
 
 def game_of_life(matrix):
