@@ -1,4 +1,4 @@
-Test pour Nalios (cc)
+Python exercises
 
 ___
 
