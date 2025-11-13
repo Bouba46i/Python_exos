@@ -1,4 +1,4 @@
-Test pour Nalios (cc)
+Python exercises
 
 pour executer l'exo 2, numpy est requis
 > pip3 install numpy
